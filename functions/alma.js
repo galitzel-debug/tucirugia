@@ -2,7 +2,7 @@ export async function onRequestPost(context) {
   try {
     const body = await context.request.json();
     const messages = body.messages || [];
-    const system = body.system || "Eres Alma, asistente de Tucirugia.";
+    const system = body.system ||process.env.ALMA_PROMPT || "Eres Alma, asistente de Tucirugia.";
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
