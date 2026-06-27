@@ -11,7 +11,7 @@ exports.handler = async function (event, context) {
   try {
     const body = JSON.parse(event.body);
     const messages = body.messages || [];
-    const system = body.system || "Eres Alma, asistente de Tucirugia.";
+    const system = body.system ||process.env.ALMA_PROMPT || "Eres Alma, asistente de Tucirugia.";
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
